@@ -1,2 +1,2 @@
-# RZButton---Arduino-button-handler-library
+# RZButton - Arduino button handler library
 Arduino button handler library
