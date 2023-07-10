@@ -24,10 +24,8 @@ bool RZButton::wasPressed() {
 }
 
 bool RZButton::stateChanged() {
-	bool currentStatus;
-
-	currentStatus = isPressed();
-	if (currentStatus != lastStatus && millis() - lastChange > 500) {
+	bool currentStatus = isPressed();
+	if (currentStatus != lastStatus && millis() - lastChange > 15) {
 		lastStatus = currentStatus;
 		lastChange = millis();
 		return 1;
@@ -37,17 +35,18 @@ bool RZButton::stateChanged() {
 }
 
 bool RZButton::uniquePress() {
-	return stateChanged() && wasPressed();
+	return stateChanged() && lastStatus;
 }
 
 bool RZButton::longPress() {
-	if (isPressed() && firstPress == 0)
+	bool currentStatus = isPressed();
+	if (currentStatus && firstPress == 0)
 		firstPress = millis();
-	if (!wasPressed() && firstPress != 0 && millis() - firstPress > 2000) {
+	if (!currentStatus && firstPress != 0 && millis() - firstPress > longPressTimeThreshold) {
 		firstPress = lastPress = multiclickCounter = 0;
 		return 1;
 	}
-	if (!wasPressed()) firstPress = 0;
+	if (!currentStatus) firstPress = 0;
 	return 0;
 }
 
