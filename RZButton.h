@@ -12,6 +12,8 @@ public:
   bool uniquePress();
   bool longPress();
   unsigned char multiclick();
+  unsigned long continuousPressTime();
+  void clearFirstPress();
   void setMulticlickTimeThreshold(unsigned int time_threshold_milliseconds);
   void setLongPressTimeThreshold(unsigned int time_threshold_milliseconds);
 
