@@ -63,6 +63,22 @@ unsigned char RZButton::multiclick() {
 	return returnThis;
 }
 
+unsigned long RZButton::continuousPressTime() {
+  if (isPressed()) {
+    if (firstPress == 0) {
+      firstPress = millis();
+    }
+    return millis() - firstPress;
+  } else {
+    firstPress = 0;
+  }
+  return 0;
+}
+
+void RZButton::clearFirstPress() {
+  firstPress = 0;
+}
+
 void RZButton::setMulticlickTimeThreshold(unsigned int time_threshold_milliseconds){
 	multiclickTimeThreshold = time_threshold_milliseconds;
 }
