@@ -32,4 +32,11 @@ void loop() {
   if (counter > 0){
     Serial.println("Multiclick of the 4 button " + String(counter) + " times");
   }
+
+  unsigned long timePressed = button1.continuousPressTime();
+  
+  if (timePressed >= 1000){
+    Serial.println("Every second");
+    button1.clearFirstPress();
+  }
 }
