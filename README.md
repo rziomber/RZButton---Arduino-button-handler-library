@@ -16,3 +16,7 @@ Available methods:
 `wasPressed()` - returns the last known status, without checking the current one
 
 `stateChanged()`
+
+`continuousPressTime()`
+
+`clearFirstPress()` - resets the timer for continuousPressTime() (to cycle events while the button is held) and prevents multi-click detection while handling a long button press
