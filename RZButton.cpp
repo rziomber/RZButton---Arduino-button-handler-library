@@ -76,7 +76,7 @@ unsigned long RZButton::continuousPressTime() {
 }
 
 void RZButton::clearFirstPress() {
-  firstPress = 0;
+	firstPress = multiclickCounter = 0;
 }
 
 void RZButton::setMulticlickTimeThreshold(unsigned int time_threshold_milliseconds){
